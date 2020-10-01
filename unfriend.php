@@ -17,23 +17,23 @@ function unfriend($id, $token){
 	$url = 'https://graph.facebook.com/me/friends?uid='.$id.'&access_token='.$token;
 	$ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "HAPUS");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
     curl_close($ch);
 	if($result == true){
-		$unf = Console::green('[UNFRIENDED]');
+		$unf = Console::green('[UNFRIEND SUKSES]');
 	} else {
-		$unf = Console::red('[FAILED TO UNFRIEND]');
+		$unf = Console::red('[UNFRIEND GAGAL]');
 	}
 	return $unf;
 }
 
-echo Console::blue("     Facebook Auto Unfriend\n");
+echo Console::blue("     Facebook Auto Unfriends\n");
 echo Console::blue("        Inactive Users\n\n");
 
 //INPUT
-echo "Facebook token : ";
+echo "Paste Facebook token : ";
 $fbtoken = trim(fgets(STDIN));
 echo "Year : ";
 $year = trim(fgets(STDIN));
